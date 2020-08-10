@@ -24,7 +24,7 @@ build:
 
 build_script:
     - cd "%APPVEYOR_BUILD_FOLDER%"
-    - cd \nppURLPlugin\src
+    - cd src
     - git submodule update --init --recursive
     - msbuild nppURLPlugin.sln /m /p:configuration="%configuration%" /p:platform="%platform_input%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
