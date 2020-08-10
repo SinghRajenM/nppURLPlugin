@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{5d21a051-e62e-4d9e-adf7-34f5745f9eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\npp">
+      <UniqueIdentifier>{d89a15c2-bb36-4bee-9f13-c23be88a3a20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="external\npp\ControlsTab.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\Docking.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\DockingDlgInterface.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\dockingResource.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\menuCmdID.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\Notepad_plus_msgs.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\PluginInterface.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\Scintilla.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\StaticDialog.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\TabBar.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\URLCtrl.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="external\npp\Window.h">
+      <Filter>ThirdParty\npp</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortcutCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScintillaEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="URL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Profile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\npp\ControlsTab.cpp">
+      <Filter>ThirdParty\npp</Filter>
+    </ClCompile>
+    <ClCompile Include="external\npp\StaticDialog.cpp">
+      <Filter>ThirdParty\npp</Filter>
+    </ClCompile>
+    <ClCompile Include="external\npp\TabBar.cpp">
+      <Filter>ThirdParty\npp</Filter>
+    </ClCompile>
+    <ClCompile Include="external\npp\URLCtrl.cpp">
+      <Filter>ThirdParty\npp</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortcutCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScintillaEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Profile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="urlPlugin.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Icon_url.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

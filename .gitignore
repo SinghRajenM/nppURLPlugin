@@ -1,3 +1,31 @@
+#-------------------------------------------------------------------------------
+# VisualStudio
+
+#-- User-specific files
+*.suo
+*.user
+*.vcxproj.user
+*.sln.docstates
+
+
+#-- Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+#[Bb]in/
+[Oo]bj/
+*.pdb
+
+#-- Visual C++ cache files
+.vs/
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
 # Prerequisites
 *.d
 
