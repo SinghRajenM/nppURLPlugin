@@ -108,9 +108,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy "$(OutDir)$(TargetFileName)" "F:\VS_Projects\OpenSourceContribution\gitGUI\nppMy\PowerEditor\bin\plugins\urlPlugin\$(TargetFileName)" /R /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
