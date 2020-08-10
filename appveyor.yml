@@ -8,7 +8,7 @@ environment:
 
 platform:
     - x64
-    - Win32
+    - x86
 
 configuration:
     - Release
@@ -16,7 +16,7 @@ configuration:
 
 install:
     - if "%platform%"=="x64" set platform_input=x64
-    - if "%platform%"=="Win32" set platform_input=Win32
+    - if "%platform%"=="x86" set platform_input=x86
     
 build:
     parallel: true                  # enable MSBuild parallel builds
@@ -27,9 +27,15 @@ build_script:
     - cd src
     - git submodule update --init --recursive
     - msbuild nppURLPlugin.sln /m /p:configuration="%configuration%" /p:platform="%platform_input%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+    - cd ..
+    - echo %CD%
 
 artifacts:
-    - path: Build\Bin\Debug\x64\urlPlugin.dll
-      name: x64
-    - path: Build\Bin\Debug\Win32\urlPlugin.dll
-      name: Win32
+    - path: src\Build\Bin\Debug\x64\urlPlugin.dll
+      name: Debug-x64
+    - path: src\Build\Bin\Release\x64\urlPlugin.dll
+      name: Release-x64
+    - path: src\Build\Bin\Debug\Win32\urlPlugin.dll
+      name: Debug-x86
+    - path: \src\Build\Bin\Release\Win32\urlPlugin.dll
+      name: Release-x86
