@@ -21,7 +21,7 @@ auto ScintillaEditor::GetSelectedText() const -> std::string
 	auto length = Execute(SCI_GETLENGTH) - 1;
 
 	auto pData = std::make_unique<char[]>(length + 1);
-	GetSelectedText(pData.get(), length + 1);
+	GetSelectedText(pData.get(), static_cast<int>(length + 1));
 
 	return pData ? pData.get() : "";
 }
@@ -84,8 +84,8 @@ LRESULT ScintillaEditor::Execute(UINT Msg, WPARAM wParam, LPARAM lParam) const
 Sci_CharacterRange ScintillaEditor::GetSelection() const
 {
 	Sci_CharacterRange crange;
-	crange.cpMin = Execute(SCI_GETSELECTIONSTART);
-	crange.cpMax = Execute(SCI_GETSELECTIONEND);
+	crange.cpMin = static_cast<long>(Execute(SCI_GETSELECTIONSTART));
+	crange.cpMax = static_cast<long>(Execute(SCI_GETSELECTIONEND));
 	return crange;
 }
 

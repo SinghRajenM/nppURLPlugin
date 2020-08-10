@@ -18,8 +18,8 @@ constexpr TCHAR MENU_DECODE[] = TEXT("&Decode URL");
 constexpr TCHAR MENU_ABOUT[] = TEXT("&About");
 constexpr TCHAR MENU_SEPERATOR[] = TEXT("-SEPARATOR-");
 
-constexpr TCHAR URL_SOURCE_CODE[] = TEXT("https://github.com/SinghRajenM");
-constexpr TCHAR URL_REPORT_ISSUE[] = TEXT("https://github.com/SinghRajenM");
+constexpr TCHAR URL_SOURCE_CODE[] = TEXT("https://github.com/SinghRajenM/nppURLPlugin");
+constexpr TCHAR URL_REPORT_ISSUE[] = TEXT("https://github.com/SinghRajenM/nppURLPlugin/issues");
 
 constexpr TCHAR STR_VERSION[] = TEXT("Version: ");
 

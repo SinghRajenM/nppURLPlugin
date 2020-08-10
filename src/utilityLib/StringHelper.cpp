@@ -18,12 +18,12 @@ std::wstring StringHelper::ToWstring(const std::string& str, UINT codePage)
 	
 	if (!str.empty())
 	{
-		int required = ::MultiByteToWideChar(codePage, 0, str.data(), static_cast<int>(str.size()), NULL, 0);
+		auto required = ::MultiByteToWideChar(codePage, 0, str.data(), static_cast<int>(str.size()), NULL, 0);
 		if (0 != required)
 		{
 			wstr.resize(required);
 
-			int converted = ::MultiByteToWideChar(codePage, 0, str.data(), static_cast<int>(str.size()), &wstr[0], wstr.capacity());
+			auto converted = ::MultiByteToWideChar(codePage, 0, str.data(), static_cast<int>(str.size()), &wstr[0], static_cast<int>(wstr.capacity()));
 			if (0 == converted)
 			{
 				wstr.clear();
@@ -39,12 +39,12 @@ std::string StringHelper::ToString(const std::wstring& wstr, UINT codePage)
 	std::string str;
 	if (!wstr.empty())
 	{
-		int required = ::WideCharToMultiByte(codePage, 0, wstr.data(), static_cast<int>(wstr.size()), NULL, 0, NULL, NULL);
+		auto required = ::WideCharToMultiByte(codePage, 0, wstr.data(), static_cast<int>(wstr.size()), NULL, 0, NULL, NULL);
 		if (0 != required)
 		{
 			str.resize(required);
 
-			int converted = ::WideCharToMultiByte(codePage, 0, wstr.data(), static_cast<int>(wstr.size()), &str[0], str.capacity(), NULL, NULL);
+			auto converted = ::WideCharToMultiByte(codePage, 0, wstr.data(), static_cast<int>(wstr.size()), &str[0], static_cast<int>(str.capacity()), NULL, NULL);
 			if (0 == converted)
 			{
 				str.clear();
