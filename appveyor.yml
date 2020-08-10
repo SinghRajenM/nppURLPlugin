@@ -1,0 +1,41 @@
+version: 1.1.0.{build}
+image: Visual Studio 2019
+
+
+environment:
+  matrix:
+  - PlatformToolset: v142
+
+platform:
+    - x64
+    - x86
+
+configuration:
+    - Release
+    - Debug
+
+install:
+    - if "%platform%"=="x64" set platform_input=x64
+    - if "%platform%"=="x86" set platform_input=x86
+
+build:
+    parallel: true                  # enable MSBuild parallel builds
+    verbosity: minimal
+
+build_script:
+    - cd "%APPVEYOR_BUILD_FOLDER%"
+    - cd src
+    - git submodule update --init --recursive
+    - msbuild nppURLPlugin.sln /m /p:configuration="%configuration%" /p:platform="%platform_input%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+    - cd ..
+    - echo %CD%
+
+artifacts:
+    - path: src\Build\Bin\Debug\x64\urlPlugin.dll
+      name: Debug-x64
+    - path: src\Build\Bin\Release\x64\urlPlugin.dll
+      name: Release-x64
+    - path: src\Build\Bin\Debug\Win32\urlPlugin.dll
+      name: Debug-x86
+    - path: \src\Build\Bin\Release\Win32\urlPlugin.dll
+      name: Release-x86
