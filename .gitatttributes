@@ -59,6 +59,12 @@ ipch/
 *.out
 *.app
 
+#default settings
+*           text=auto
+*.txt       text
+*.vcproj    text eol=crlf
+*.sh        text eol=lf
+*.jpg       -text
 
 # Make UTF-16 files diff-able (looks a bit ugly, but nice to have)
 *.rc diff=set diff
