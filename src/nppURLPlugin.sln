@@ -12,24 +12,34 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilityLib", "utilityLib\ut
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|ARM64.Build.0 = Debug|ARM64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|x64.ActiveCfg = Debug|x64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|x64.Build.0 = Debug|x64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|x86.ActiveCfg = Debug|Win32
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Debug|x86.Build.0 = Debug|Win32
+		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|ARM64.ActiveCfg = Release|ARM64
+		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|ARM64.Build.0 = Release|ARM64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|x64.ActiveCfg = Release|x64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|x64.Build.0 = Release|x64
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|x86.ActiveCfg = Release|Win32
 		{159FACFB-40AE-4D9F-B76A-325389E84EA3}.Release|x86.Build.0 = Release|Win32
+		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|ARM64.Build.0 = Debug|ARM64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|x64.ActiveCfg = Debug|x64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|x64.Build.0 = Debug|x64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|x86.ActiveCfg = Debug|Win32
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Debug|x86.Build.0 = Debug|Win32
+		{8085352B-BABD-4447-95CC-57457EF895D1}.Release|ARM64.ActiveCfg = Release|ARM64
+		{8085352B-BABD-4447-95CC-57457EF895D1}.Release|ARM64.Build.0 = Release|ARM64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Release|x64.ActiveCfg = Release|x64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Release|x64.Build.0 = Release|x64
 		{8085352B-BABD-4447-95CC-57457EF895D1}.Release|x86.ActiveCfg = Release|Win32
