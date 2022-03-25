@@ -99,7 +99,7 @@ char* ScintillaEditor::GetSelectedText(char* txt, int size, bool expand) const
 		ExpandWordSelection();
 		range = GetSelection();
 	}
-	if (!(size > (range.cpMax - range.cpMin)))	//there must be atleast 1 byte left for zero terminator
+	if (!(static_cast<Sci_PositionCR>(size) > (range.cpMax - range.cpMin)))	//there must be atleast 1 byte left for zero terminator
 	{
 		range.cpMax = range.cpMin + size - 1;	//keep room for zero terminator
 	}
@@ -127,13 +127,13 @@ auto ScintillaEditor::GetWordRange() const -> std::pair<int, int>
 	return std::pair<int, int>(startPos, endPos);
 }
 
-auto ScintillaEditor::GetWordFromRange(char* txt, int size, int pos1, int pos2) const-> char*
+auto ScintillaEditor::GetWordFromRange(char* txt, size_t size, size_t pos1, size_t pos2) const-> char*
 {
 	if (!size)
 		return NULL;
 	if (pos1 > pos2)
 	{
-		int tmp = pos1;
+		auto tmp = pos1;
 		pos1 = pos2;
 		pos2 = tmp;
 	}

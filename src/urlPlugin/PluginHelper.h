@@ -49,10 +49,10 @@ private:
 	};
 
 	void SetMenuIcon();
-	void SetMenuIcon(toolbarIcons& tbIcons, CallBackID callbackID);
+	void SetMenuIcon(toolbarIconsWithDarkMode& tbIcons, CallBackID callbackID);
 	void InitCommandMenu();
 	void InitToolbarIcon();
-	void InitToolbarIcon(toolbarIcons& tbIcons, DWORD iconID);
+	void InitToolbarIcon(toolbarIconsWithDarkMode& tbIcons, DWORD iconID);
 
 	void ToggleMenuItemState(int nCmdId, bool bVisible);
 
@@ -71,7 +71,7 @@ private:
 
 private:
 	HMODULE								m_hModule = nullptr;
-	toolbarIcons						m_hMenuIcon = {};
+	toolbarIconsWithDarkMode			m_hMenuIcon = {};
 	ShortcutCommand						m_shortcutCommands;
 	NppData								m_NppData = {};
 	std::unique_ptr<SettingsDlg>		m_pSettingsDlg = nullptr;

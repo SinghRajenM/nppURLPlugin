@@ -87,12 +87,12 @@ void PluginHelper::SetMenuIcon()
 	SetMenuIcon(m_hMenuIcon, CallBackID::DECODE_URL);
 }
 
-void PluginHelper::SetMenuIcon(toolbarIcons& tbIcons, CallBackID callbackID)
+void PluginHelper::SetMenuIcon(toolbarIconsWithDarkMode& tbIcons, CallBackID callbackID)
 {
 	if (tbIcons.hToolbarIcon || tbIcons.hToolbarBmp)
 	{
 		auto nCommandId = m_shortcutCommands.GetCommandID(callbackID);
-		::SendMessage(m_NppData._nppHandle, NPPM_ADDTOOLBARICON, reinterpret_cast<WPARAM&>(nCommandId), reinterpret_cast<LPARAM>(&tbIcons));
+		::SendMessage(m_NppData._nppHandle, NPPM_ADDTOOLBARICON_FORDARKMODE, reinterpret_cast<WPARAM&>(nCommandId), reinterpret_cast<LPARAM>(&tbIcons));
 	}
 }
 
@@ -118,12 +118,14 @@ void PluginHelper::InitToolbarIcon()
 	InitToolbarIcon(m_hMenuIcon, IDI_ICON_TOOLBAR);
 }
 
-void PluginHelper::InitToolbarIcon(toolbarIcons& tbIcons, DWORD iconID)
+void PluginHelper::InitToolbarIcon(toolbarIconsWithDarkMode& tbIcons, DWORD iconID)
 {
 	auto dpi = GetDeviceCaps(GetWindowDC(m_NppData._nppHandle), LOGPIXELSX);
 	int size = 16 * dpi / 96;
 
 	tbIcons.hToolbarIcon = reinterpret_cast<HICON>(::LoadImage(static_cast<HINSTANCE>(m_hModule), MAKEINTRESOURCE(iconID), IMAGE_ICON, size, size, 0));
+	tbIcons.hToolbarIconDarkMode = reinterpret_cast<HICON>(::LoadImage(static_cast<HINSTANCE>(m_hModule), MAKEINTRESOURCE(iconID), IMAGE_ICON, size, size, 0)); // handle later for dark mode
+
 	ICONINFO iconinfo;
 	GetIconInfo(tbIcons.hToolbarIcon, &iconinfo);
 	tbIcons.hToolbarBmp = iconinfo.hbmColor;

@@ -22,7 +22,7 @@ private:
 	auto GetSelectedText(char* txt, int size, bool expand = true) const->char*;
 	bool ExpandWordSelection() const;
 	auto GetWordRange() const->std::pair<int, int>;
-	auto GetWordFromRange(char* txt, int size, int pos1, int pos2) const->char*;
+	auto GetWordFromRange(char* txt, size_t size, size_t pos1, size_t pos2) const->char*;
 	void GetText(char* dest, size_t start, size_t end) const;
 
 private:

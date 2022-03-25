@@ -1,9 +1,9 @@
 #pragma once
-#include<locale>
-#include<map>
-#include<sstream>
-#include<algorithm>        
-#include<vector>
+#include <locale>
+#include <map>
+#include <sstream>
+#include <algorithm>
+#include <vector>
 
 
 class EncodeDecodeBase
