@@ -7,16 +7,18 @@ environment:
   - PlatformToolset: v142
 
 platform:
-    - x64
     - x86
+    - x64
+    - arm64
 
 configuration:
     - Release
     - Debug
 
 install:
-    - if "%platform%"=="x64" set platform_input=x64
     - if "%platform%"=="x86" set platform_input=x86
+    - if "%platform%"=="x64" set platform_input=x64
+    - if "%platform%"=="arm64" set platform_input=arm64
 
 build:
     parallel: true                  # enable MSBuild parallel builds
@@ -31,11 +33,15 @@ build_script:
     - echo %CD%
 
 artifacts:
-    - path: src\Build\Bin\Debug\x64\urlPlugin.dll
-      name: Debug-x64
-    - path: src\Build\Bin\Release\x64\urlPlugin.dll
-      name: Release-x64
     - path: src\Build\Bin\Debug\Win32\urlPlugin.dll
       name: Debug-x86
     - path: \src\Build\Bin\Release\Win32\urlPlugin.dll
       name: Release-x86
+    - path: src\Build\Bin\Debug\x64\urlPlugin.dll
+      name: Debug-x64
+    - path: src\Build\Bin\Release\x64\urlPlugin.dll
+      name: Release-x64
+    - path: src\Build\Bin\Debug\ARM64\urlPlugin.dll
+      name: Debug-ARM64
+    - path: \src\Build\Bin\Release\ARM64\urlPlugin.dll
+      name: Release-ARM64
