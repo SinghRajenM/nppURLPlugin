@@ -167,9 +167,6 @@
     <ClInclude Include="AboutDlg.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="external\npp\ControlsTab.h" />
-    <ClInclude Include="external\npp\Docking.h" />
-    <ClInclude Include="external\npp\DockingDlgInterface.h" />
-    <ClInclude Include="external\npp\dockingResource.h" />
     <ClInclude Include="external\npp\menuCmdID.h" />
     <ClInclude Include="external\npp\Notepad_plus_msgs.h" />
     <ClInclude Include="external\npp\PluginInterface.h" />

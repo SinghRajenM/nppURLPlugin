@@ -24,15 +24,6 @@
     <ClInclude Include="external\npp\ControlsTab.h">
       <Filter>ThirdParty\npp</Filter>
     </ClInclude>
-    <ClInclude Include="external\npp\Docking.h">
-      <Filter>ThirdParty\npp</Filter>
-    </ClInclude>
-    <ClInclude Include="external\npp\DockingDlgInterface.h">
-      <Filter>ThirdParty\npp</Filter>
-    </ClInclude>
-    <ClInclude Include="external\npp\dockingResource.h">
-      <Filter>ThirdParty\npp</Filter>
-    </ClInclude>
     <ClInclude Include="external\npp\menuCmdID.h">
       <Filter>ThirdParty\npp</Filter>
     </ClInclude>
