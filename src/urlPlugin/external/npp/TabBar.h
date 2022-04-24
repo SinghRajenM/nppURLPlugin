@@ -59,7 +59,7 @@ struct TBHDR {
 class TabBar : public Window
 {
 public:
-  TabBar() : Window(), _nbItem(0), _hasImgLst(false), _hFont(NULL), _isVertical(false) {};
+  TabBar() : Window() {};
   virtual ~TabBar() {};
   virtual void destroy();
   virtual void initTabBar(HINSTANCE hInst, HWND hwnd, bool isVertical = false, bool isTraditional = false, bool isMultiLine = false);
@@ -99,18 +99,18 @@ public:
   };
 
 protected:
-  size_t _nbItem;
-  bool _hasImgLst;
-  HFONT _hFont;
-  HFONT _hLargeFont;
-  HFONT _hVerticalFont;
-  HFONT _hVerticalLargeFont;
+  size_t _nbItem = 0;
+  bool _hasImgLst = false;
+  HFONT _hFont = nullptr;
+  HFONT _hLargeFont = nullptr;
+  HFONT _hVerticalFont = nullptr;
+  HFONT _hVerticalLargeFont = nullptr;
 
-  int _ctrlID;
-  bool _isTraditional;
+  int _ctrlID = -1;
+  bool _isTraditional = false;
 
-  bool _isVertical;
-  bool _isMultiLine;
+  bool _isVertical = false;
+  bool _isMultiLine = false;
 
   long getRowCount() const {
     return long(::SendMessage(_hSelf, TCM_GETROWCOUNT, 0, 0));
@@ -132,9 +132,9 @@ class TabBarPlus : public TabBar
 {
 public :
 
-  TabBarPlus() : TabBar(), _isDragging(false), _tabBarDefaultProc(NULL), _currentHoverTabItem(-1),\
-    _isCloseHover(false), _whichCloseClickDown(-1), _lmbdHit(false) {};
-  enum tabColourIndex {
+  TabBarPlus() : TabBar() {};
+
+  enum class tabColourIndex {
     activeText, activeFocusedTop, activeUnfocusedTop, inactiveText, inactiveBg
   };
 
@@ -209,20 +209,20 @@ protected:
   // it's the boss to decide if we do the drag N drop
   static bool _doDragNDrop;
   // drag N drop members
-  bool _isDragging;
-  bool _isDraggingInside;
-  int _nSrcTab;
-  int _nTabDragged;
-  POINT _draggingPoint; // coordinate of Screen
-  WNDPROC _tabBarDefaultProc;
+  bool _isDragging = false;
+  bool _isDraggingInside = false;
+  int _nSrcTab = 0;
+  int _nTabDragged = -1;
+  POINT _draggingPoint = {}; // coordinate of Screen
+  WNDPROC _tabBarDefaultProc = nullptr;
 
-  RECT _currentHoverTabRect;
-  int _currentHoverTabItem;
+  RECT _currentHoverTabRect = {};
+  int _currentHoverTabItem = -1;
 
   CloseButtonZone _closeButtonZone;
-  bool _isCloseHover;
-  int _whichCloseClickDown;
-  bool _lmbdHit; // Left Mouse Button Down Hit
+  bool _isCloseHover = false;
+  int _whichCloseClickDown = -1;
+  bool _lmbdHit = false; // Left Mouse Button Down Hit
 
   LRESULT runProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 

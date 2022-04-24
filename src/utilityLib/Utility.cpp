@@ -6,6 +6,8 @@
 #include <filesystem>
 #include <shlobj.h>
 #include <commdlg.h>
+#include <Shlwapi.h>
+#include <algorithm>
 
 #pragma comment(lib, "Version.lib")
 #pragma comment(lib, "shlwapi.lib")
@@ -23,9 +25,8 @@ std::wstring CUtility::GetVersion(const std::wstring& filePath)
 
 		if (bufferSize > 0)
 		{
-			//unsigned char* buffer = new unsigned char[bufferSize];
 			auto buffer = std::make_unique<unsigned char[]>(bufferSize);
-			::GetFileVersionInfo(filePath.c_str(), handle, bufferSize, reinterpret_cast<LPVOID>(buffer.get()));
+			::GetFileVersionInfo(filePath.c_str(), 0, bufferSize, reinterpret_cast<LPVOID>(buffer.get()));
 
 			VS_FIXEDFILEINFO* lpFileInfo = nullptr;
 			UINT cbFileInfo = 0;

@@ -338,6 +338,7 @@ void TabBarPlus::doOwnerDrawTab()
 
 void TabBarPlus::setColour(COLORREF colour2Set, tabColourIndex i)
 {
+  using enum tabColourIndex;
   switch (i)
   {
   case activeText:
@@ -624,7 +625,7 @@ void TabBarPlus::drawItem(DRAWITEMSTRUCT *pDrawItemStruct)
   }
   bool isSelected = (nTab == ::SendMessage(_hSelf, TCM_GETCURSEL, 0, 0));
 
-  wchar_t label[MAX_PATH];
+  wchar_t label[MAX_PATH] = {};
   TCITEM tci;
   tci.mask = TCIF_TEXT|TCIF_IMAGE;
   tci.pszText = label;

@@ -108,6 +108,9 @@ void StaticDialog::display(bool toShow) const
 
 HGLOBAL StaticDialog::makeRTLResource(int dialogID, DLGTEMPLATE **ppMyDlgTemplate)
 {
+	if (!ppMyDlgTemplate)
+		return nullptr;
+
 	// Get Dlg Template resource
 	HRSRC  hDialogRC = ::FindResource(_hInst, MAKEINTRESOURCE(dialogID), RT_DIALOG);
 	if (!hDialogRC)
@@ -124,15 +127,18 @@ HGLOBAL StaticDialog::makeRTLResource(int dialogID, DLGTEMPLATE **ppMyDlgTemplat
 	// Duplicate Dlg Template resource
 	unsigned long sizeDlg = ::SizeofResource(_hInst, hDialogRC);
 	HGLOBAL hMyDlgTemplate = ::GlobalAlloc(GPTR, sizeDlg);
-	*ppMyDlgTemplate = static_cast<DLGTEMPLATE*>(::GlobalLock(hMyDlgTemplate));
+	if (hMyDlgTemplate)
+	{
+		*ppMyDlgTemplate = static_cast<DLGTEMPLATE*>(::GlobalLock(hMyDlgTemplate));
 
-	::memcpy(*ppMyDlgTemplate, pDlgTemplate, sizeDlg);
+		::memcpy(*ppMyDlgTemplate, pDlgTemplate, sizeDlg);
 
-	DLGTEMPLATEEX *pMyDlgTemplateEx = reinterpret_cast<DLGTEMPLATEEX *>(*ppMyDlgTemplate);
-	if (pMyDlgTemplateEx->signature == 0xFFFF)
-		pMyDlgTemplateEx->exStyle |= WS_EX_LAYOUTRTL;
-	else
-		(*ppMyDlgTemplate)->dwExtendedStyle |= WS_EX_LAYOUTRTL;
+		DLGTEMPLATEEX* pMyDlgTemplateEx = reinterpret_cast<DLGTEMPLATEEX*>(*ppMyDlgTemplate);
+		if (pMyDlgTemplateEx && pMyDlgTemplateEx->signature == 0xFFFF)
+			pMyDlgTemplateEx->exStyle |= WS_EX_LAYOUTRTL;
+		else if(*ppMyDlgTemplate)
+			(*ppMyDlgTemplate)->dwExtendedStyle |= WS_EX_LAYOUTRTL;
+	}
 
 	return hMyDlgTemplate;
 }

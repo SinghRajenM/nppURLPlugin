@@ -1,8 +1,6 @@
 #pragma once
-#include <sstream>
+
 #include <string>
-#include <Shlwapi.h>
-#include <algorithm>
 #include <vector>
 
 class CUtility
