@@ -27,6 +27,7 @@ void PluginHelper::SetInfo(const NppData& notpadPlusData)
 	m_NppData = notpadPlusData;
 	InitCommandMenu();
 	InitToolbarIcon();
+	InitConfigPath();
 }
 
 const TCHAR* PluginHelper::GetPluginName() const
@@ -125,6 +126,14 @@ void PluginHelper::InitToolbarIcon(toolbarIconsWithDarkMode& tbIcons, DWORD icon
 	tbIcons.hToolbarBmp = iconinfo.hbmColor;
 }
 
+void PluginHelper::InitConfigPath()
+{
+	// Get config dir path
+	WCHAR szPath[_MAX_PATH]{};
+	SendMessage(m_NppData._nppHandle, NPPM_GETPLUGINSCONFIGDIR, MAX_PATH, reinterpret_cast<LPARAM>(&szPath));
+	m_configPath = std::wstring(szPath) + TEXT("\\") + STR_PROFILE_NAME;
+}
+
 void PluginHelper::ToggleMenuItemState(int nCmdId, bool bVisible)
 {
 	::SendMessage(m_NppData._nppHandle, NPPM_SETMENUITEMCHECK, static_cast<WPARAM>(nCmdId), bVisible);
@@ -136,7 +145,7 @@ void PluginHelper::ShowSettingDlg()
 
 	if (!m_pSettingsDlg)
 	{
-		m_pSettingsDlg = std::make_unique<SettingsDlg>(reinterpret_cast<HINSTANCE>(m_hModule), m_NppData._nppHandle, nCmdId);
+		m_pSettingsDlg = std::make_unique<SettingsDlg>(reinterpret_cast<HINSTANCE>(m_hModule), m_NppData._nppHandle, nCmdId, m_configPath);
 	}
 
 	if (m_pSettingsDlg)	// Hope it is constructed by now.
@@ -164,7 +173,7 @@ void PluginHelper::EncodeURL()
 	if (selectedText.has_value() && !selectedText->empty())
 	{
 		EncodeInfo info;
-		ProfileEncode().GetInfo(info);
+		ProfileEncode(m_configPath).GetInfo(info);
 
 		auto pEncode = std::make_unique<Encode>();
 		pEncode->setUrl(selectedText.value());
@@ -181,7 +190,7 @@ void PluginHelper::DecodeURL()
 	if (selectedText.has_value() && !selectedText->empty())
 	{
 		DecodeInfo info;
-		ProfileDecode().GetInfo(info);
+		ProfileDecode(m_configPath).GetInfo(info);
 
 		auto pDecoder = std::make_unique<Decode>();
 		pDecoder->setUrl(selectedText.value());

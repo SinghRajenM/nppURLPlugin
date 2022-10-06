@@ -4,19 +4,20 @@
 #include <shlobj.h>
 #include <memory>
 
-Profile::Profile()
+Profile::Profile(const std::wstring& path)
+	: m_ProfileFilePath(path)
 {
 	Init();
 }
 
-bool Profile::ReadValue(const std::wstring& section, const std::wstring& key, std::wstring& retVal) const
+bool Profile::ReadValue(const std::wstring& section, const std::wstring& key, std::wstring& retVal, const std::wstring& defaultVal) const
 {
 	bool bRetVal = false;
 
 	// Try with MAX_PATH
 	constexpr DWORD nBufSize = MAX_PATH * 2;
 	auto pData = std::make_unique<TCHAR[]>(nBufSize);
-	GetPrivateProfileString(section.c_str(), key.c_str(), nullptr, pData.get(), nBufSize, m_ProfileFilePath.c_str());
+	GetPrivateProfileString(section.c_str(), key.c_str(), defaultVal.c_str(), pData.get(), nBufSize, m_ProfileFilePath.c_str());
 
 	if (pData)
 	{
@@ -34,24 +35,23 @@ bool Profile::WriteValue(const std::wstring& section, const std::wstring& key, c
 
 void Profile::Init()
 {
-	auto appDatapath = CUtility::GetSpecialFolderLocation(CSIDL_APPDATA);
-	if (appDatapath.empty())
+	// Move exiting config file
+	// from "%appdata%\\Notepad++\\plugins\\URLPlugin"
+	// to default plugin folder
+
+	auto oldProfileDir = CUtility::GetSpecialFolderLocation(CSIDL_APPDATA);
+	if (!oldProfileDir.empty() && !m_ProfileFilePath.empty())
 	{
-		::MessageBox(NULL, L"Failed to get %appdata% path. Please contact developer. Inconvenience regretted.", L"Unhandled Error", MB_OK);
-		return;
+		oldProfileDir += STR_PROFILE_PATH;
+		
+		auto oldProfilePath = oldProfileDir + STR_PROFILE_NAME;
+		if (CUtility::FileExist(oldProfilePath))
+		{
+			CUtility::Move(oldProfilePath, m_ProfileFilePath);
+		}
+
+		CUtility::DeleteDir(oldProfileDir);
 	}
-
-	appDatapath += STR_PROFILE_PATH;
-	if (!CUtility::DirExist(appDatapath) && !CUtility::CreateDir(appDatapath))
-	{
-		std::wstring msg = L"Failed to get below directory. Please contact developer. Inconvenience regretted.";
-		msg += L"\n\n" + appDatapath;
-
-		::MessageBox(NULL, msg.c_str(), L"Unhandled Error", MB_OK);
-		return;
-	}
-
-	m_ProfileFilePath = appDatapath + L"\\" + STR_PROFILE_NAME;
 }
 
 bool ProfileEncode::GetInfo(EncodeInfo& info) const

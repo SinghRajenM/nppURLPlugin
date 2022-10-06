@@ -134,9 +134,35 @@ bool CUtility::CreateDir(const std::wstring& dirPath)
 	return r;
 }
 
+bool CUtility::DeleteDir(const std::wstring& dirPath)
+{
+	bool r = std::filesystem::remove(dirPath);
+	return r;
+}
+
 bool CUtility::Copy(const std::wstring& srcFile, const std::wstring& dstFile)
 {
 	bool r = std::filesystem::copy_file(srcFile, dstFile);
+	return r;
+}
+
+bool CUtility::Move(const std::wstring& srcFile, const std::wstring& dstFile)
+{
+	bool r = false;
+	try
+	{
+		std::filesystem::rename(srcFile, dstFile);
+		r = true;
+	}
+	catch (std::filesystem::filesystem_error& e)
+	{
+		throw e;
+	}
+	catch (...)
+	{
+		throw "Move file failed.";
+	}
+
 	return r;
 }
 

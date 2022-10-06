@@ -24,7 +24,7 @@ constexpr TCHAR URL_REPORT_ISSUE[] = TEXT("https://github.com/SinghRajenM/nppURL
 constexpr TCHAR STR_VERSION[] = TEXT("Version: ");
 
 constexpr TCHAR STR_PROFILE_NAME[] = TEXT("URLPlugin.ini");
-constexpr TCHAR STR_PROFILE_PATH[] = TEXT("\\Notepad++\\plugins\\URLPlugin");
+constexpr TCHAR STR_PROFILE_PATH[] = TEXT("\\Notepad++\\plugins\\URLPlugin\\");
 
 constexpr TCHAR STR_CONVERSION_SEPARATOR[] = TEXT(";");
 

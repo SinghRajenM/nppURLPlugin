@@ -8,7 +8,10 @@
 #include <Uxtheme.h>
 
 
-SettingsDlg::SettingsDlg(HINSTANCE hIntance, HWND hParent, int nCmdId) : m_nCmdId(nCmdId), StaticDialog()
+SettingsDlg::SettingsDlg(HINSTANCE hIntance, HWND hParent, int nCmdId, const std::wstring& configPath)
+	: m_nCmdId(nCmdId)
+	, m_configPath(configPath)
+	, StaticDialog()
 {
 	init(hIntance, hParent);
 }
@@ -109,12 +112,12 @@ void SettingsDlg::destroy()
 
 bool SettingsDlg::ReadINI()
 {
-	return ProfileEncode().GetInfo(m_EncodeInfo) && ProfileDecode().GetInfo(m_DecodeInfo);
+	return ProfileEncode(m_configPath).GetInfo(m_EncodeInfo) && ProfileDecode(m_configPath).GetInfo(m_DecodeInfo);
 }
 
 bool SettingsDlg::WriteINI()
 {
-	return ProfileEncode().SetInfo(m_EncodeInfo) && ProfileDecode().SetInfo(m_DecodeInfo);
+	return ProfileEncode(m_configPath).SetInfo(m_EncodeInfo) && ProfileDecode(m_configPath).SetInfo(m_DecodeInfo);
 }
 
 void SettingsDlg::InitDlg()

@@ -27,8 +27,10 @@ public:
 	static long FileSize(const std::wstring& filePath);
 
 	static bool CreateDir(const std::wstring& dirPath);
+	static bool DeleteDir(const std::wstring& dirPath);
 
 	static bool Copy(const std::wstring& srcFile, const std::wstring& dstFile);
+	static bool Move(const std::wstring& srcFile, const std::wstring& dstFile);
 
 	static auto GetFileName(const std::wstring& fullPath, bool withExtension = true)->std::wstring;
 	static auto GetFileExtension(const std::wstring& fileName)->std::wstring;

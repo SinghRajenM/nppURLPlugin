@@ -53,6 +53,7 @@ private:
 	void InitCommandMenu();
 	void InitToolbarIcon();
 	void InitToolbarIcon(toolbarIconsWithDarkMode& tbIcons, DWORD iconID);
+	void InitConfigPath();
 
 	void ToggleMenuItemState(int nCmdId, bool bVisible);
 
@@ -77,4 +78,5 @@ private:
 	std::unique_ptr<SettingsDlg>		m_pSettingsDlg = nullptr;
 	std::unique_ptr<AboutDlg>			m_pAboutDlg = nullptr;
 	std::unique_ptr<ScintillaEditor>	m_pScintillaEditor = nullptr;
+	std::wstring						m_configPath;
 };
